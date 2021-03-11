@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/newsMasterDetailGraph">
+
+    <!--Выделены в отдельный граф, т.к.
+    используется byNavGraphsViewModel; т.е. сделано для того, чтобы
+    не изменять имеющийся код при добавлении новых фрагментов/графов-->
+    <navigation
+        android:id="@+id/newsMasterDetailGraph"
+        app:startDestination="@id/newsFeedFragment">
+        <fragment
+            android:id="@+id/articleFragment"
+            android:name="com.example.newstesttask.ui.ArticleFragment"
+            android:label="fragment_article"
+            tools:layout="@layout/fragment_article" />
+        <fragment
+            android:id="@+id/newsFeedFragment"
+            android:name="com.example.newstesttask.ui.NewsFeedFragment"
+            android:label="fragment_news_feed"
+            tools:layout="@layout/fragment_news_feed" >
+            <action
+                android:id="@+id/action_newsFeedFragment_to_articleFragment"
+                app:destination="@id/articleFragment" />
+        </fragment>
+    </navigation>
+
+
+</navigation>
